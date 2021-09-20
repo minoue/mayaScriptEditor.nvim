@@ -4,7 +4,7 @@ import socket
 
 
 @pynvim.plugin
-class TestPlugin(object):
+class MayaScriptEditor(object):
 
     def __init__(self, nvim):
         self.nvim = nvim
@@ -13,15 +13,19 @@ class TestPlugin(object):
         self.PORT = 54321
         self.ADDR = (self.HOST, self.PORT)
 
-        if platform.system == "Darwin":
+        if platform.system() == "Darwin":
             self.TEMP = "/var/tmp/mayaScriptTmp.py"
         else:
             self.TEMP = None
 
     @pynvim.command('SendToMaya', nargs='*', range='')
-    def testfunction(self, args, range):
+    def send_to_maya(self, args, range):
 
         buffer = self.nvim.current.buffer
+
+        if self.TEMP is None:
+            print("Failed to get temp file path")
+            return
 
         f = open(self.TEMP, 'w')
         f.truncate(0)
