@@ -13,8 +13,11 @@ class MayaScriptEditor(object):
         self.PORT = 54321
         self.ADDR = (self.HOST, self.PORT)
 
-        if platform.system() == "Darwin":
+        system = platform.system()
+        if system == "Darwin":
             self.TEMP = "/var/tmp/mayaScriptTmp.py"
+        elif system == "Linux":
+            self.TEMP = "/usr/tmp/mayaScriptTmp.py"
         else:
             self.TEMP = None
 
