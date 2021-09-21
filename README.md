@@ -4,6 +4,8 @@ Send buffer contents to maya
 
 \* **Works only for python scripts** *
 
+![](img/SendToMaya.gif)
+
 ## Requirements
 * nvim
 * pynvim
