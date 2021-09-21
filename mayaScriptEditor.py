@@ -27,7 +27,7 @@ class MayaScriptEditor(object):
         buffer = self.nvim.current.buffer
 
         if self.TEMP is None:
-            print("Failed to get temp file path")
+            self.nvim.err_write("Failed to get temp file path\n")
             return
 
         f = open(self.TEMP, 'w')
@@ -47,7 +47,8 @@ class MayaScriptEditor(object):
             client.connect(self.ADDR)
             client.send(cmd.encode())
         except ConnectionRefusedError:
-            print("Failed to connect. Make sure Maya command port is open.")
+            self.nvim.err_write(
+                "Failed to connect. Make sure Maya command port is open.")
 
         # data = client.recv(1024)
         client.close()
