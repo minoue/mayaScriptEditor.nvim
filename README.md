@@ -19,6 +19,8 @@ Send buffer contents to maya
 
 2. Copy mayaScriptEditor.py to ~/.config/nvim/rplugin/python3
 
+3. Run `:UpdateRemotePlugins` in Neovim
+
 ## How to use
 
 1. Open command port in maya
